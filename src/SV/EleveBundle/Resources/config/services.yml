@@ -1,0 +1,15 @@
+services:
+#    sv_eleve.example:
+#        class: SV\EleveBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    sv_eleve.eleveclasse_crud:
+        class: SV\EleveBundle\Sonata\EleveClasseCRUD
+        arguments: ["@service_container"]
+
+    sv_eleve.doctrine_listener.eleve_saving:
+        class: SV\EleveBundle\DoctrineListener\ElevesCreateListener
+        arguments:
+            - "@sv_eleve.eleveclasse_crud"
+        tags:
+            - {name: doctrine.event_listener, event: postPersist }

@@ -1,0 +1,99 @@
+{% extends "SVEleveBundle::mainframe.html.twig" %}
+
+{% block title %} {{ enfant.nom | upper }} {{ enfant.prenom | upper }} - Abscences et retards {% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/fullcalendar.css') }}"/>
+    <style>
+        .abscence_link{
+            color: #FF4081;
+        }
+    </style>
+{% endblock %}
+
+{% block jscript %}
+    {{ parent() }}
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'month,agendaWeek',
+                    center: 'title'
+                }, // buttons for switching between views
+                defaultView: 'agendaWeek',
+                weekends: false,
+                minTime: "06:00:00",
+                maxTime: "18:30:00",
+                events: '{{ path('sv_eleve_abscence_events', {'slug': enfant.slug }) }}',
+                type: 'POST',
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    {% block title_section %}
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <span class="mdl-typography--font-light mdl-typography--display-2">Abscences et retards</span>
+            </div>
+        </div>
+    {% endblock %}
+
+{#
+    {% block interval %}
+        {% include("SVEleveBundle::layout-param.html.twig") %}
+    {% endblock %}
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--1-offset-desktop">
+            <p>
+                <span class="mdl-typography--font-light mdl-typography--body-1">Nombre d'heures d'abscences :</span>
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-alert">01</span>
+            </p>
+            <p>
+                <span class="mdl-typography--font-light mdl-typography--body-1">Nombre de retard :</span>
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-alert">01</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="mdl-grid scv-grid mdl-cell--1-offset-desktop">
+        <div class="mdl-cell mdl-cell--12-col">
+            <div class="mdl-typography--font-bold mdl-typography--font-condensed">Légende</div>
+        </div>
+    </div>
+    <div class="mdl-grid scv-grid mdl-cell--1-offset-desktop">
+        <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+            <p>
+                <span class="mdl-typography--font-light mdl-typography--body-1"><img src="{{ asset('images/circle.png') }}" width="10px"> </span> :
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-basic">Abscences</span>
+            </p>
+            <p>
+                <span class="mdl-typography--font-light mdl-typography--body-1"><img src="{{ asset('images/square.png') }}" width="10px"> </span> :
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-basic">Retards</span>
+            </p>
+        </div>
+
+        <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+            <p>
+                <span class="mdl-typography--font-bold mdl-typography--caption">H </span> :
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-basic">Heures</span>
+            </p>
+            <p>
+                <span class="mdl-typography--font-bold mdl-typography--caption">M </span> :
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-basic">Matières</span>
+            </p>
+        </div>
+    </div>
+#}
+    <div class="mdl-grid">
+        <div class="mdl-cell  mdl-cell--1-offset-desktop mdl-cell--10-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <div id="calendar"></div>
+        </div>
+    </div>
+{% endblock %}

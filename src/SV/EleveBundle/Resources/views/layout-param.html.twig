@@ -1,0 +1,33 @@
+{#{% extends "SVEleveBundle::layout.html.twig" %}#}
+
+{#{% block body %}#}
+    {# {{ parent() }} #}
+
+    {#{% block title_section %}#}
+    	{##}
+    {#{% endblock %}#}
+    {##}
+    {#{% block interval %}#}
+		<form id="myform" action="#">
+		    <div class="mdl-grid">
+		    	<div class="mdl-cell mdl-cell--2-col mdl-cell--12-col-phone mdl-cell--8-offset-desktop mdl-cell--4-offset-tablet">
+					<div id="select_country" class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+						<select id="date_start_id" name="profile_information_form_country" class="mdl-selectfield__select">
+							<option value="192">18/09/2017</option>
+						</select>
+						<label for="date_start_id" class="mdl-selectfield__label">Du</label>
+					</div>
+				</div>
+
+				<div class="mdl-cell mdl-cell--2-col mdl-cell--12-col-phone">
+					<div id="select_country" class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+						<select id="date_end_id" name="profile_information_form_country" class="mdl-selectfield__select" disabled>
+							<option value="1">22/09/2017</option>
+						</select>
+						<label for="date_end_id" class="mdl-selectfield__label">Au</label>
+					</div>
+				</div>
+		    </div>
+	    </form>
+    {#{% endblock %}#}
+{#{% endblock %}#}

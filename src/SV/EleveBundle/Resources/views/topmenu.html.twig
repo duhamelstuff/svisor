@@ -1,0 +1,43 @@
+<div class="mdl-color--white mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-phone scv-cell-no-marging">
+        <form id="my_form" action="#">
+            <div class="mdl-color--white mdl-cell mdl-cell--12-col mdl-grid scv-cell-no-marging">
+                {#<div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone">#}
+                    {#<div id="select_year" class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">#}
+                        {#<select id="profile_information_form_year_id" name="profile_information_form_year" class="mdl-selectfield__select">#}
+                            {#<option value="192">2013/2014</option>#}
+                            {#<option value="1">2014/2015</option>#}
+                            {#<option value="255">2015/2016</option>#}
+                            {#<option value="2">2016/2017</option>#}
+                            {#<option value="3">2017/2018</option>#}
+                        {#</select>#}
+                        {#<label for="profile_information_form_year_id" class="mdl-selectfield__label">Année scolaire</label>#}
+                    {#</div>#}
+                {#</div>#}
+
+                {#<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">#}
+                    {#<div id="select_student" class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">#}
+                        {#<select id="profile_information_form_student_id" name="profile_information_form_student" class="mdl-selectfield__select">#}
+                            {#<option value="1">TCHAFACK G. Duhamel</option>#}
+                            {#<option value="192">TABOU B. Ulrich</option>#}
+                        {#</select>#}
+                        {#<label for="profile_information_form_student_id" class="mdl-selectfield__label">Elève</label>#}
+                    {#</div>#}
+                {#</div>#}
+
+                <div class="mdl-layout-spacer"></div>
+
+                <div class="mdl-cell mdl-cell--1-col mdl-cell--5-offset-desktop mdl-cell--3-col-phone mdl-cell--1-offset-phone">
+								<span id="user-menu" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+									<i class="material-icons">settings</i>
+								</span>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="user-menu">
+                        <li class="mdl-menu__item">Paramètres</li>
+                        <li class="mdl-menu__item">Aide</li>
+                        <li class="mdl-menu__item"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

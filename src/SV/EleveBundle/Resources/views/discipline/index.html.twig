@@ -1,0 +1,61 @@
+{% extends "SVEleveBundle::mainframe.html.twig" %}
+
+{% block title %} {{ enfant.nom | upper }} {{ enfant.prenom | upper }} - Disciplines {% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <style>
+        .discipline_link{
+            color: #FF4081;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% block title_section %}
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <span class="mdl-typography--font-light mdl-typography--display-2">Disciplines</span>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% if (disciplines|length < 1) %}
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--1-offset-desktop">
+                <span class="mdl-typography--font-light mdl-typography--display-1 mdl-typography--text-uppercase scv-typography-primary">- aucun rapport de discipline - </span>
+            </div>
+        </div>
+    {% else %}
+        <div class="mdl-grid mdl-color--white">
+            <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--1-col-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
+                Intitulé
+            </div>
+            <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--3-col-tablet mdl-cell--2-col-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
+                Description
+            </div>
+            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--hide-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
+                Sanction disciplinaire
+            </div>
+            <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--1-col-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
+                Fait le
+            </div>
+        </div>
+
+        {% for discipline in disciplines %}
+
+            <div class="mdl-grid scv-grid-list mdl-color--white">
+                <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                    <span class="mdl-typography--font-regular mdl-typography--subheading scv-typography-alert">{{ discipline.libelle }}</span>
+                </div>
+                <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--3-col-tablet mdl-cell--2-col-phone mdl-typography--font-regular mdl-typography--body-1-color-contrast">
+                    {{ discipline.description }}
+                </div>
+                <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--hide-phone mdl-typography--font-regular mdl-typography--body-1-color-contrast">
+                    {{ discipline.sanction }}
+                </div>
+                <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--1-col-phone">{{ discipline.dated | date("d M Y", "Europe/Paris") }}</div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

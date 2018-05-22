@@ -1,0 +1,63 @@
+sv_eleve_homepage:
+    path:     /
+    defaults: { _controller: SVEleveBundle:Pupil:index }
+
+sv_eleve_overview:
+    path:     /{slug}/overview
+    defaults: { _controller: SVEleveBundle:Pupil:overview }
+
+sv_eleve_add:
+    path:     /new
+    defaults: { _controller: SVEleveBundle:Pupil:addPupil }
+
+sv_eleve_abscence:
+    path:     /{slug}/abscence
+    defaults: { _controller: SVEleveBundle:Pupil:abscence }
+
+sv_eleve_abscence_events:
+    path:     /{slug}/abscence_events
+    defaults: { _controller: SVEleveBundle:Pupil:abscenceEvents }
+
+sv_eleve_abscence_add:
+    path:     /{slug}/abscence/add
+    defaults: { _controller: SVEleveBundle:Pupil:addAbscence }
+
+sv_eleve_abscence_update:
+    path:     /{slug}/abscence/update
+    defaults: { _controller: SVEleveBundle:Pupil:updateAbscence }
+
+sv_eleve_discipline:
+    path:     /{slug}/discipline
+    defaults: { _controller: SVEleveBundle:Pupil:discipline }
+
+sv_eleve_discipline_add:
+    path:     /{slug}/discipline/add
+    defaults: { _controller: SVEleveBundle:Pupil:addDiscipline }
+
+sv_eleve_discipline_update:
+    path:     /{slug}/discipline/update
+    defaults: { _controller: SVEleveBundle:Pupil:updateDiscipline }
+
+sv_eleve_finance:
+    path:     /{slug}/finance
+    defaults: { _controller: SVEleveBundle:Pupil:finance }
+
+sv_eleve_finance_add:
+    path:     /{slug}/finance/add
+    defaults: { _controller: SVEleveBundle:Pupil:addFinance }
+
+sv_eleve_finance_update:
+    path:     /{slug}/finance/update
+    defaults: { _controller: SVEleveBundle:Pupil:updateFinance }
+
+sv_eleve_mark:
+    path:     /{slug}/mark
+    defaults: { _controller: SVEleveBundle:Pupil:mark }
+
+sv_eleve_mark_add:
+    path:     /{slug}/mark/add
+    defaults: { _controller: SVEleveBundle:Pupil:addMark }
+
+sv_eleve_mark_update:
+    path:     /{slug}/mark/update
+    defaults: { _controller: SVEleveBundle:Pupil:updateMark }

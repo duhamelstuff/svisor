@@ -1,0 +1,117 @@
+{% extends "SVEleveBundle::mainframe.html.twig" %}
+
+{% block title %} {{ enfant.nom | upper }} {{ enfant.prenom | upper }} - Vue d'ensemble {% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <style>
+        .overview_link{
+            color: #FF4081;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% block title_section %}
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <span class="mdl-typography--font-light mdl-typography--display-2">Vue d'ensemble</span>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block interval %}
+        {# {{ parent() }} #}
+    {% endblock %}
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <img src="{{ asset("uploads/pupil_avatar/"~ enfant.photo) }}" class="scv-avatar-pupil">
+        </div>
+
+        <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+            <span class="mdl-typography--font-light mdl-typography--headline scv-typography-primary">Informations personnelles</span> <hr>
+            <p> 
+            	<span class="mdl-typography--font-light mdl-typography--body-1">Nom :</span>
+                <span class="mdl-typography--font-regular mdl-typography--body-1">{{ enfant.nom | upper }}</span>
+            </p>
+            <p> 
+            	<span class="mdl-typography--font-light mdl-typography--body-1">Prenom :</span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1">{{ enfant.prenom | upper }}</span>
+            </p>
+            <p> 
+            	<span class="mdl-typography--font-light mdl-typography--body-1">Date de naissance : </span>
+                <span class="mdl-typography--font-regular mdl-typography--body-1">{{ enfant.dateN | date("d M Y", "Europe/Paris") }}, {{ time_diff(enfant.dateN) }}</span>
+            </p>
+            <p> 
+            	<span class="mdl-typography--font-light mdl-typography--body-1">Sexe : </span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1 mdl-typography--text-uppercase">{{ enfant.sexe }}</span>
+            </p>
+            
+            <!-- <div class="scv-content-right-position">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                    Modifier les informations
+                </button>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--11-col">
+            <span class="mdl-typography--font-light mdl-typography--headline scv-typography-primary">Informations scolaires</span> <hr>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Etablissement :</span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1 mdl-typography--text-uppercase">{{ enfant.college }}</span>
+            </p>
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Classe :</span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-alert">{{ enfant.classe }}</span>
+            </p>
+            <p>
+                {#<span class="mdl-typography--font-light mdl-typography--body-1">Status : </span> #}
+                {#<span class="mdl-typography--font-regular mdl-typography--body-1">Non redoublant</span>#}
+            </p>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Effectif total de la classe :</span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-alert">{{ planning.effectif }}</span>
+            </p>
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Enseignant titulaire :</span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1">{{ planning.titulaire | upper }}</span>
+            </p>
+        </div>        
+    </div>
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--1-offset-desktop">
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Heures d'abscences :</span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-alert">{{ numHeure }} H (et plus)</span>
+            </p>
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Nombre de retard :</span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-alert">{{ numRetard }}</span>
+            </p>
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Disciplines : </span> 
+                <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-alert">{{ numDiscipline }} cas</span>
+            </p>
+            <p> 
+                <span class="mdl-typography--font-light mdl-typography--body-1">Situation financière : </span>
+                {% if financeOK %}
+                    <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-primary">OK</span>
+                {% else %}
+                    <span class="mdl-typography--font-regular mdl-typography--body-1 scv-typography-warning">Non reglé</span>
+                {% endif %}
+            </p>
+            <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--accent">
+                <i class="material-icons" role="presentation">error_outline</i>
+            </button>
+            <span class="mdl-typography--font-light mdl-typography--caption scv-typography-alert">Signaler une erreur</span>
+        </div>
+    </div>
+{% endblock %}

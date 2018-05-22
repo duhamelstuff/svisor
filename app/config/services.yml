@@ -1,0 +1,120 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+    
+    admin.sessions:
+        class: SV\EleveBundle\Admin\SessionsAdmin
+        arguments: [~, SV\EleveBundle\Entity\Sessions, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Sessions"}
+        public: true
+
+    admin.colleges:
+        class: SV\EleveBundle\Admin\CollegesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Colleges, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Colleges"}
+        public: true
+
+    admin.parents:
+        class: SV\EleveBundle\Admin\ParentsAdmin
+        arguments: [~, SV\EleveBundle\Entity\Parents, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Parents}
+        public: true
+
+    admin.classes:
+        class: SV\EleveBundle\Admin\ClassesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Classes, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Classes"}
+        public: true
+
+    admin.niveaux:
+        class: SV\EleveBundle\Admin\NiveauxAdmin
+        arguments: [~, SV\EleveBundle\Entity\Niveaux, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Niveaux"}
+        public: true
+
+    admin.series:
+        class: SV\EleveBundle\Admin\SeriesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Series, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Series"}
+        public: true
+
+    admin.salles:
+        class: SV\EleveBundle\Admin\SallesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Salles, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "N° Salles"}
+        public: true
+
+    admin.matieres:
+        class: SV\EleveBundle\Admin\MatieresAdmin
+        arguments: [~, SV\EleveBundle\Entity\Matieres, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Matieres"}
+        public: true
+
+    admin.plannings:
+        class: SV\EleveBundle\Admin\PlanningsAdmin
+        arguments: [~, SV\EleveBundle\Entity\Plannings, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Emplois de temps"}
+        public: true
+
+    admin.eleves:
+        class: SV\EleveBundle\Admin\ElevesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Eleves, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Eleves}
+        public: true
+
+    admin.absences:
+        class: SV\EleveBundle\Admin\AbscencesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Abscences, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Abscences}
+        public: true
+
+    admin.devoirs:
+        class: SV\EleveBundle\Admin\DevoirsAdmin
+        arguments: [~, SV\EleveBundle\Entity\Devoirs, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Evaluations}
+        public: true
+
+    admin.notes:
+        class: SV\EleveBundle\Admin\NotesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Notes, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Notes}
+        public: true
+
+    admin.disciplines:
+        class: SV\EleveBundle\Admin\DisciplinesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Disciplines, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Discipline}
+        public: true
+
+    admin.finances:
+        class: SV\EleveBundle\Admin\FinancesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Finances, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Finances}
+        public: true

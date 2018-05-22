@@ -1,0 +1,46 @@
+<div class="scv-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+    <nav class="scv-navigation mdl-navigation mdl-color--blue-grey-800">
+        <a class="mdl-navigation__link" href="{{ path('sv_eleve_overview', {'slug': enfantActif.slug}) }}">
+            <div class="lnk_drw_container">
+                <p class="mdl-typography--font-bold mdl-typography--title overview_link">
+                    <i class="material-icons">tv</i> <span class="lnk_drw">Vue d'ensemble</span>
+                </p>
+            </div>
+        </a>
+        <a class="mdl-navigation__link" href="{{ path('sv_eleve_abscence', {'slug': enfantActif.slug}) }}">
+            <div class="lnk_drw_container">
+                <p class="mdl-typography--font-bold mdl-typography--title abscence_link">
+                    <i class="material-icons">access_time</i> <span class="lnk_drw">Abscences</span>
+                </p>
+            </div>
+        </a>
+        <a class="mdl-navigation__link" href="{{ path('sv_eleve_discipline', {'slug': enfantActif.slug}) }}">
+            <div class="lnk_drw_container">
+                <p class="mdl-typography--font-bold mdl-typography--title discipline_link">
+                    <i class="material-icons">person</i> <span class="lnk_drw">Disciplines</span>
+                </p>
+            </div>
+        </a>
+        <a class="mdl-navigation__link" href="{{ path('sv_eleve_finance', {'slug': enfantActif.slug}) }}">
+            <div class="lnk_drw_container">
+                <p class="mdl-typography--font-bold mdl-typography--title finance_link">
+                    <i class="material-icons">account_balance</i> <span class="lnk_drw">Finances</span>
+                </p>
+            </div>
+        </a>
+        <a class="mdl-navigation__link" href="{{ path('sv_eleve_mark', {'slug': enfantActif.slug}) }}">
+            <div class="lnk_drw_container">
+                <p class="mdl-typography--font-bold mdl-typography--title mark_link">
+                    <i class="material-icons">local_library</i> <span class="lnk_drw">Notes</span>
+                </p>
+            </div>
+        </a>
+        <a class="mdl-navigation__link" href="{{ path('homepage') }}">
+            <div class="lnk_drw_container">
+                <p class="mdl-typography--font-bold mdl-typography--title">
+                    <i class="material-icons">home</i> <span class="lnk_drw">Retour site</span>
+                </p>
+            </div>
+        </a>
+    </nav>
+</div>

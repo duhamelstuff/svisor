@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>{% block title %} Parent {% endblock %}</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <link rel="icon" sizes="192x192" href="{{ asset('images/android-desktop.png') }}"/>
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite"/>
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ios-desktop.png') }}"/>
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png"/>
+    <meta name="msapplication-TileColor" content="#3372DF"/>
+
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}"/>
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+-->
+    {% block css %}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&style=normal"/>
+        <link rel="stylesheet" href="{{ asset('css/material.min.css') }}"/>
+        {#<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css"> #}
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
+        <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/mdl-selectfield.min.css') }}"/>
+
+        <style>
+            #view-source {
+                position: fixed;
+                display: block;
+                right: 0;
+                bottom: 0;
+                margin-right: 40px;
+                margin-bottom: 40px;
+                z-index: 900;
+            }
+        </style>
+    {% endblock %}
+
+    {% block jscript %}
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/material.min.js') }}"></script>
+        <script src="{{ asset('js/mdl-selectfield.min.js') }}"></script>
+        <script src="{{ asset('js/changeselect.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+    <div class="scv-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        {{ render(controller(
+            "SVEleveBundle:Pupil:drawermenu",
+            {'slug': enfant.slug }
+        )) }}
+
+        <main class="mdl-layout__content mdl-color--grey-100">
+            {# l'inclusion des 2 controlleurs n'est probablement pas réellement optimale car on pourrait utiliser 1 seul
+            contrôlleur pour combiner les fonctions (voir définitions des méthodes dans le controlleur). Mais le fait
+            est que le drawer et le top menu sont/doivent être séparés par le tag "main" (MDL principle) #}
+
+            {{ render(controller(
+                "SVEleveBundle:Pupil:topmenu",
+                {'slug': enfant.slug }
+            )) }}
+
+            {% block body %}
+
+            {% endblock %}
+        </main>
+
+        <footer class="mdl-mini-footer mdl-color--blue-grey-900">
+            <div class="mdl-mini-footer__left-section">
+                <p class="mdl-typography--font-light">© 2017 SchoolVisor</p>
+                <p class="mdl-typography--font-light">Tous droits réservés</p>
+            </div>
+
+            <div class="mdl-mini-footer__right-section">
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                    <li><a href="#">Aide</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

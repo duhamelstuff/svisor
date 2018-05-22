@@ -1,0 +1,145 @@
+<?php
+
+namespace SV\EleveBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Absences
+ *
+ * @ORM\Table(name="absences")
+ * @ORM\Entity(repositoryClass="SV\EleveBundle\Repository\AbsencesRepository")
+ */
+class Absences
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dDebut", type="date")
+     */
+    private $dDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dFin", type="date")
+     */
+    private $dFin;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nbre
+     *
+     * @param integer $nbre
+     *
+     * @return Absences
+     */
+    public function setNbre($nbre)
+    {
+        $this->nbre = $nbre;
+
+        return $this;
+    }
+
+    /**
+     * Get nbre
+     *
+     * @return int
+     */
+    public function getNbre()
+    {
+        return $this->nbre;
+    }
+
+    /**
+     * Set retard
+     *
+     * @param boolean $retard
+     *
+     * @return Absences
+     */
+    public function setRetard($retard)
+    {
+        $this->retard = $retard;
+
+        return $this;
+    }
+
+    /**
+     * Get retard
+     *
+     * @return bool
+     */
+    public function getRetard()
+    {
+        return $this->retard;
+    }
+
+    /**
+     * Set dDebut
+     *
+     * @param \DateTime $dDebut
+     *
+     * @return Absences
+     */
+    public function setDDebut($dDebut)
+    {
+        $this->dDebut = $dDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get dDebut
+     *
+     * @return \DateTime
+     */
+    public function getDDebut()
+    {
+        return $this->dDebut;
+    }
+
+    /**
+     * Set dFin
+     *
+     * @param \DateTime $dFin
+     *
+     * @return Absences
+     */
+    public function setDFin($dFin)
+    {
+        $this->dFin = $dFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dFin
+     *
+     * @return \DateTime
+     */
+    public function getDFin()
+    {
+        return $this->dFin;
+    }
+}
+

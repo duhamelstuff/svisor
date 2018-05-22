@@ -1,0 +1,88 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+#        SV\UserBundle\Entity\User: sha512
+        SV\EleveBundle\Entity\Parents: sha512
+
+    role_hierarchy:
+        ROLE_PARENT: ROLE_USER
+        ROLE_SUPER_ADMIN:
+            - ROLE_USER
+            - ROLE_ADMIN
+            - ROLE_ALLOWED_TO_SWITCH
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        #in_memory:
+        #    memory:
+        #        users:
+        #            user: {password: userpass, roles: ['ROLE_PARENT']}
+        #            admin: {password: adminpass, roles: ['ROLE_ADMIN']}
+
+        # main:
+        #     entity:
+        #         class: SV\UserBundle\Entity\User
+        #         property: username
+
+        parent_provider:
+            id: fos_user.user_provider.username
+
+#        admin_provider:
+#            id: fos_user.user_provider.username
+
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+#
+#        login_fw:
+#            pattern: ^/login$ #url se terminant par "login", donc pas de prise en compte pour login_check
+#            anonymous: true
+#
+#        logout_fw:
+#            pattern: ^/logout$ #url se terminant par "login", donc pas de prise en compte pour login_check
+#            anonymous: true
+#
+#        principal:
+#            pattern: ^/pupil
+#            provider: parent_provider
+#            anonymous: false
+#            form_login:
+#                login_path: fos_user_security_login
+#                check_path: fos_user_security_check
+#            logout:
+#                path: fos_user_security_logout
+#                target: fos_user_security_login
+#            remember_me:
+#                secret: '%secret%'
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: parent_provider
+                csrf_token_generator: security.csrf.token_manager
+
+            logout:       true
+            anonymous:    true
+
+#        adminroom:
+#            pattern: ^/admin
+#            provider: admin_provider
+#            anonymous: false
+#            form_login:
+#                login_path: fos_user_security_login
+#                check_path: fos_user_security_check
+#            logout:
+#                path: fos_user_security_logout
+#                target: fos_user_security_login
+#            remember_me:
+#                secret: '%secret%'
+    access_control:
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: ROLE_ADMIN }
+        - { path: ^/pupil, role: ROLE_PARENT }
+        - { path: ^/admin, role: ROLE_ADMIN }
