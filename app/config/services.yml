@@ -105,6 +105,13 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Notes}
         public: true
 
+    admin.annonces:
+        class: SV\EleveBundle\Admin\AnnoncesAdmin
+        arguments: [~, SV\EleveBundle\Entity\Annonces, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Annonces}
+        public: true
+
     admin.disciplines:
         class: SV\EleveBundle\Admin\DisciplinesAdmin
         arguments: [~, SV\EleveBundle\Entity\Disciplines, ~]
