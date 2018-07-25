@@ -40,6 +40,6 @@
 
         public function toString($object)
         {
-            return $object instanceof Sessions ? $object->getDebut().' / '.$object->getFin() : "Année Académique ";
+            return $object instanceof Sessions ? $object->getDebut()->format("d M Y").' / '.$object->getFin()->format("d M Y") : "Année Académique ";
         }
     }
