@@ -47,6 +47,13 @@ class Notes
     private $eleve;
 
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="SV\EleveBundle\Entity\Sessions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $session;
+
+    /**
      * Get id
      *
      * @return int
@@ -151,4 +158,21 @@ class Notes
     {
         return $this->eleve;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    /**
+     * @param mixed $session
+     */
+    public function setSession($session)
+    {
+        $this->session = $session;
+    }
+
 }

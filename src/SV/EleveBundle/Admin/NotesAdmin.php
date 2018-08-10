@@ -21,6 +21,10 @@ class NotesAdmin extends AbstractAdmin
     {
         $formMapper
             ->with("Détails")
+                ->add('session', 'sonata_type_model', [
+                    'class' => 'SV\EleveBundle\Entity\Sessions',
+                    'label' => 'Année scolaire'
+                ])
                 ->add('devoir', 'sonata_type_model', [
                     'class' => 'SV\EleveBundle\Entity\Devoirs',
                     'label' => 'Evaluation'
@@ -56,7 +60,7 @@ class NotesAdmin extends AbstractAdmin
             ->addIdentifier('devoir.college')
             ->addIdentifier('matiere.matiere')
             ->addIdentifier('note')
-            ->addIdentifier('devoir.dateRemise')
+            ->addIdentifier('devoir.dateRemiseNotes')
         ;
     }
 }
