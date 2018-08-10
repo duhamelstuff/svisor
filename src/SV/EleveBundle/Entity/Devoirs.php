@@ -36,6 +36,13 @@ class Devoirs
     private $type;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="detail", type="string")
+     */
+    private $detail;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateRemiseNotes", type="date")
@@ -184,6 +191,22 @@ class Devoirs
         return $this->classe;
     }
 
+    /**
+     * @return string
+     */
+    public function getDetail()
+    {
+        return $this->detail;
+    }
+
+    /**
+     * @param string $detail
+     */
+    public function setDetail($detail)
+    {
+        $this->detail = $detail;
+    }
+
     public function __toString()
     {
         $typeDevoir = "";
@@ -197,7 +220,7 @@ class Devoirs
                     $typeDevoir = 'Séquentiel';
                     break;
                 case 3:
-                    $typeDevoir = 'Unique';
+                    $typeDevoir = 'Trimestriel';
                     break;
             }
             return "Devoir <<".$typeDevoir.">> du ".$this->getDateDevoir()->format("d-M-Y").' | '.$this->getClasse().' | '.$this->getCollege()->getNom();

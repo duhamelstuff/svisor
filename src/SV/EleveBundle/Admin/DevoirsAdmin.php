@@ -16,6 +16,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use SV\EleveBundle\Entity\Devoirs;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class DevoirsAdmin extends AbstractAdmin
 {
@@ -32,18 +33,21 @@ class DevoirsAdmin extends AbstractAdmin
                     ),
                     'placeholder' => '--- Choisir ---'
                 ])
-                ->add('dateDevoir', DateType::class, [
-                    'label' => "Date d'évaluation",
-                    'placeholder' => array(
-                        'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                        'hour' => 'Heure', 'minute' => 'Minute', 'second' => 'Seconde',
-                    ),
-                    'widget' => 'single_text'
-                ])
-                ->add('dateRemiseNotes', DateType::class, [
-                    'label' => "Date remise des notes",
-                    'widget' => 'single_text'
-                ])
+                    ->add('dateDevoir', DateType::class, [
+                        'label' => "Date d'évaluation",
+                        'placeholder' => array(
+                            'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                            'hour' => 'Heure', 'minute' => 'Minute', 'second' => 'Seconde',
+                        ),
+                        'widget' => 'single_text'
+                    ])
+                    ->add('dateRemiseNotes', DateType::class, [
+                        'label' => "Date remise des notes",
+                        'widget' => 'single_text'
+                    ])
+                    ->add('detail', TextareaType::class, [
+                        'label' => "Détail du dévoir (objet, motif, nom de matière)",
+                    ])
             ->end()
             ->with("Autres", ['class' => 'col-md-5'])
                 ->add('college', 'sonata_type_model_autocomplete', [

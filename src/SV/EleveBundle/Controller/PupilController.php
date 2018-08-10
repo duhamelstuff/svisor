@@ -234,23 +234,48 @@ class PupilController extends Controller
         ));
 	}
 
-	public function markAction($slug)
-	{
+    public function markAction($slug)
+    {
         $eleveRepository = $this->getDoctrine()->getManager()->getRepository("SVEleveBundle:Eleves");
         $eleve = $eleveRepository->findOneBy(array(
             'slug' => $slug
         ));
 
-        $disciplineRepository = $this->getDoctrine()->getManager()->getRepository("SVEleveBundle:Disciplines");
-        $disciples = $disciplineRepository->findBy(array(
+        $noteRepository = $this->getDoctrine()->getManager()->getRepository("SVEleveBundle:Notes");
+        $notes = $noteRepository->findBy(array(
             'eleve' => $eleve
         ));
-
+//        dump($notes);
+//        die;
         return $this->render('SVEleveBundle:mark:index.html.twig', array(
             "enfant" => $eleve,
-            "disciplines" => $disciples
+            "notes" => $notes
         ));
-	}
+    }
+
+    public function markDetailAction($slug, $idExam)
+    {
+        $eleveRepository = $this->getDoctrine()->getManager()->getRepository("SVEleveBundle:Eleves");
+        $eleve = $eleveRepository->findOneBy(array(
+            'slug' => $slug
+        ));
+
+        $devoirRepository = $this->getDoctrine()->getManager()->getRepository("SVEleveBundle:Devoirs");
+        $devoir = $devoirRepository->findOneBy(array(
+            'id' => $idExam
+        ));
+
+        $noteRepository = $this->getDoctrine()->getManager()->getRepository("SVEleveBundle:Notes");
+        $notes = $noteRepository->findBy(array(
+            'devoir' => $idExam
+        ));
+
+        return $this->render('SVEleveBundle:mark:detail.html.twig', array(
+            "enfant" => $eleve,
+            "notes" => $notes,
+            "devoir" =>$devoir,
+        ));
+    }
 
     public function drawermenuAction($slug)
     {
