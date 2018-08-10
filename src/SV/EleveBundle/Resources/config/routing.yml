@@ -54,6 +54,10 @@ sv_eleve_mark:
     path:     /{slug}/mark
     defaults: { _controller: SVEleveBundle:Pupil:mark }
 
+sv_eleve_mark_detail:
+    path:     /{slug}/mark/{idExam}
+    defaults: { _controller: SVEleveBundle:Pupil:markDetail }
+
 sv_eleve_mark_add:
     path:     /{slug}/mark/add
     defaults: { _controller: SVEleveBundle:Pupil:addMark }

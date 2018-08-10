@@ -14,8 +14,29 @@
 {% block body %}
     {% block title_section %}
         <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--7-col">
+                <span class="mdl-typography--font-light mdl-typography--display-2">Détails Note</span>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col">
+                <a href="{{ path('sv_eleve_mark', {'slug': enfant.slug}) }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    Retour listes des évaluations
+                </a>
+            </div>
+
             <div class="mdl-cell mdl-cell--12-col">
-                <span class="mdl-typography--font-light mdl-typography--display-2">Evaluations</span>
+                <span class="mdl-typography--font-light mdl-typography--headline">{{ devoir.detail }}</span>
+            </div>
+
+            <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                <hr>
+                <p>
+                    <span class="mdl-typography--font-light mdl-typography--body-1">Date de l'évaluation :</span>
+                    <span class="mdl-typography--font-regular mdl-typography--body-1">{{ devoir.dateRemiseNotes | date("F jS Y") }}</span>
+                </p>
+                <p>
+                    <span class="mdl-typography--font-light mdl-typography--body-1">Date remise des notes :</span>
+                    <span class="mdl-typography--font-regular mdl-typography--body-1">{{ devoir.dateDevoir | date("F jS Y") }}</span>
+                </p>
             </div>
         </div>
     {% endblock %}
@@ -24,34 +45,22 @@
     {% if notes is defined %}
         <div class="mdl-grid mdl-color--white">
             <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
-                Intitulé
+                Matière
             </div>
             <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--3-col-tablet mdl-cell--2-col-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
-                Détail
-            </div>
-            <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--1-col-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
-                Date
+                Note (/20)
             </div>
         </div>
 
         {% for note in notes %}
             <div class="mdl-grid scv-grid-list mdl-color--white">
                 <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
-                    <a href="{{ path('sv_eleve_mark_detail', {'slug': enfant.slug, 'idExam': note.devoir.id}) }}" class="mdl-typography--font-regular mdl-typography--subheading scv-typography-alert">
-                        {% if note.devoir.type is same as(1) %}
-                            Evaluation singulière
-                        {% elseif note.devoir.type is same as(2) %}
-                            Evaluation séquentielle
-                        {% else %}
-                            Evaluation Trimestrielle
-                        {% endif %}
-                    </a>
+                    <span href="" class="mdl-typography--font-regular mdl-typography--subheading scv-typography-alert">
+                        {{ note.matiere }}
+                    </span>
                 </div>
                 <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--3-col-tablet mdl-cell--2-col-phone mdl-typography--font-regular mdl-typography--body-1-color-contrast">
-                    {{ note.devoir.detail }}
-                </div>
-                <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-                    {{ note.devoir.dateDevoir | date("F jS Y") }}
+                    {{ note.note }}
                 </div>
             </div>
         {% endfor %}
