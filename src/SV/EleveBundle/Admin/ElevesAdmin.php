@@ -17,7 +17,9 @@
             $formMapper
                 ->with("Informations Personnelles", ['class' => 'col-md-4'])
                     ->add('nom', TextType::class)
-                    ->add('prenom', TextType::class)
+                    ->add('prenom', TextType::class, array(
+                        'required' =>false,
+                    ))
                     ->add('sexe', ChoiceType::class, array(
                         'choices' => array('H' => 'H', 'F' => 'F')
                     ))
