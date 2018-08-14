@@ -20,25 +20,24 @@
             $formMapper->with("Informations personnelles", ['class' => 'col-md-8'])
                 ->add('nom', TextType::class, array(
                     'required' => true,
-                    'invalid_message' => "Mauvais type de valeur saisi"
+                    'invalid_message' => "Champ requis"
                 ), array(
                     'placeholder' => "Nom du parent"
                 ))
                 ->add('prenom', TextType::class, array(
-                    'required' => true,
-                    'invalid_message' => "Mauvais type de valeur saisi"
+                    'required' => false,
                     ))
                 ->add('ville', TextType::class, array(
                     'required' => true,
                     'label' => "Ville de résidence",
-                    'invalid_message' => "Mauvais type de valeur saisi"
+                    'invalid_message' => "Champ requis"
                 ))
             ->end()
             ->with("Contact", ['class' => 'col-md-4'])
                 ->add('telephone', NumberType::class, array(
                     'required' => true,
                     'label' => "N. Téléphone (+237)",
-                    'invalid_message' => "Mauvais type de valeur saisi"
+                    'invalid_message' => "Champ requis"
                 ))
                 ->add('email', EmailType::class, array(
                     'required' => false,
@@ -48,7 +47,7 @@
             ->with("Informations de connexions", ['class' => 'col-md-4'])
                 ->add('username', TextType::class, array(
                     'required' => true,
-                    'invalid_message' => "Mauvais type de valeur saisi"
+                    'invalid_message' => "Champ requis"
                 ))
                 ->add('plainPassword', RepeatedType::class, array(
                     'type' => PasswordType::class,
