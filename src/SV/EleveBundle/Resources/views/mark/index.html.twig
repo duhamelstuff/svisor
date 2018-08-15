@@ -21,7 +21,7 @@
     {% endblock %}
 
 
-    {% if notes is defined %}
+    {% if notes is defined and notes|length > 0 %}
         <div class="mdl-grid mdl-color--white">
             <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone mdl-typography--font-regular mdl-typography--headline-color-contrast">
                 Intitulé
