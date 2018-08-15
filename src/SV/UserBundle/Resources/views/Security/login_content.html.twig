@@ -4,19 +4,29 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-    <form action="{{ path("fos_user_security_check") }}" method="post">
+    <img id="profile-img" class="profile-img-card" src="http://www.schoolvisor.net/images/logo.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
         {% if csrf_token %}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         {% endif %}
+        <span id="reauth-email" class="reauth-email"></span>
 
-        <label for="username">{{ 'security.login.username'|trans }}</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" />
 
-        <label for="password">{{ 'security.login.password'|trans }}</label>
-        <input type="password" id="password" name="_password" required="required" />
+        <input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}" />
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        <div id="remember" class="checkbox">
+            <label>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans }}
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="_submit" name="_submit" >{{ 'security.login.submit'|trans }}</button>
 
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <div>
+            <a href="#" class="forgot-password">
+                Mot de passe oublié ?
+            </a>
+        </div>
     </form>
