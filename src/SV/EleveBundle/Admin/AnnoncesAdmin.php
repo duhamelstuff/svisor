@@ -63,7 +63,7 @@ class AnnoncesAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('dated');
+        $datagridMapper->add('dated'); 
     }
 
     public function toString($object)
