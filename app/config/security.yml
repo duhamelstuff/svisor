@@ -3,7 +3,7 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
-#        SV\UserBundle\Entity\User: sha512
+        SV\UserBundle\Entity\User: sha512
         SV\EleveBundle\Entity\Parents: sha512
 
     role_hierarchy:
