@@ -4,6 +4,7 @@ namespace SV\EleveBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use SV\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -74,7 +75,7 @@ class Eleves
     private $file; //utiliser pour gérer l'uploade des fichiers
 
     /**
-     * @ORM\ManyToOne(targetEntity="SV\EleveBundle\Entity\Parents", inversedBy="eleves", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="SV\UserBundle\Entity\User", inversedBy="eleves", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $parent;
@@ -251,17 +252,17 @@ class Eleves
 
     public function setFile(UploadedFile $fFile = null)
     {
-        $this->file = fFile;
+        $this->file = $fFile;
     }
 
     /**
      * Set parent
      *
-     * @param \SV\EleveBundle\Entity\Parents $parent
+     * @param User $parent
      *
      * @return Eleves
      */
-    public function setParent(\SV\EleveBundle\Entity\Parents $parent)
+    public function setParent(User $parent)
     {
         $this->parent = $parent;
 
@@ -271,7 +272,7 @@ class Eleves
     /**
      * Get parent
      *
-     * @return \SV\EleveBundle\Entity\Parents
+     * @return User
      */
     public function getParent()
     {
