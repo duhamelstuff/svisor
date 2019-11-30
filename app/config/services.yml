@@ -29,10 +29,10 @@ services:
         public: true
 
     admin.parents:
-        class: SV\EleveBundle\Admin\ParentsAdmin
-        arguments: [~, SV\EleveBundle\Entity\Parents, ~]
+        class: SV\EleveBundle\Admin\UsersAdmin
+        arguments: [~, SV\UserBundle\Entity\User, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Parents}
+            - { name: sonata.admin, manager_type: orm, label: "Utilisateurs"}
         public: true
 
     admin.classes:

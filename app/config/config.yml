@@ -80,8 +80,8 @@ swiftmailer:
 
 fos_user:
     db_driver: orm          #Type de BD à use
-    firewall_name: parent_scope     #Nom du firewall derrière lequel on va utiliser les users FOS
-    user_class: SV\EleveBundle\Entity\Parents
+    firewall_name: main     #Nom du firewall derrière lequel on va utiliser les users FOS
+    user_class: SV\UserBundle\Entity\User
     
     from_email:
         address: "yourapp@yourapp.com"

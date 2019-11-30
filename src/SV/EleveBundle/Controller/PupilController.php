@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SV\EleveBundle\Entity\Eleves;
 use SV\EleveBundle\Form\ElevesType;
-use SV\EleveBundle\Form\ParentsType;
+use SV\EleveBundle\Form\UsersType;
 /**
 * 
 */

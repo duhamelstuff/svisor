@@ -1,7 +1,6 @@
 <?php
     namespace SV\EleveBundle\Admin;
 
-    use SV\EleveBundle\Entity\Parents;
     use Sonata\AdminBundle\Admin\AbstractAdmin;
     use Sonata\AdminBundle\Datagrid\ListMapper;
     use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -13,7 +12,7 @@
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Sonata\CoreBundle\Validator\ErrorElement;
 
-    class ParentsAdmin extends AbstractAdmin
+    class UsersAdmin extends AbstractAdmin
     {
         protected function configureFormFields(FormMapper $formMapper)
         {

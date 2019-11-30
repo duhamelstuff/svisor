@@ -24,7 +24,7 @@ class ElevesType extends AbstractType
             ->add('sexe', CheckboxType::class)
             ->add('dateN', DateType::class)
             ->add('file', FileType::class, array('required'=>false))
-            ->add('parent', ParentsType::class)
+            ->add('parent', UsersType::class)
             ->add('save', SubmitType::class);
     }
     

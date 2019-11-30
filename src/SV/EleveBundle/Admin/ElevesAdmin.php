@@ -49,7 +49,7 @@
                 ->end()
                 ->with("Parent", ['class' => 'col-md-4'])
                     ->add('parent', 'sonata_type_model_autocomplete', [
-                        'class' => 'SV\EleveBundle\Entity\Parents',
+                        'class' => 'SV\UserBundle\Entity\User',
                         'property' => 'nom'
                     ])
                 ->end()
