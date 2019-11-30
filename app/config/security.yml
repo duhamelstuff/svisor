@@ -2,8 +2,8 @@
 # https://symfony.com/doc/current/security.html
 security:
     encoders:
-        #FOS\UserBundle\Model\UserInterface: bcrypt
-        SV\UserBundle\Entity\User: 'argon2i'
+        FOS\UserBundle\Model\UserInterface: argon2i
+        #SV\UserBundle\Entity\User: 'argon2i'
 
     role_hierarchy:
         ROLE_PARENT: ROLE_USER
